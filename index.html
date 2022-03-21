@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<br>
+    <h1>Display</h1>
+    <button type="button" onclick="getBook()" >Get all Books</button>
+    <p id="demo1"></p>
+    <script>
+        function getBook(){
+            var xhttp= new XMLHttpRequest();
+            xhttp.onreadystatechange= function(){
+                if(this.readyState==4 && this.status==200)
+                {
+                    document.getElementById("demo1").innerHTML=this.responseText;
+                    
+                }
+            };
+            xhttp.open("GET", "books" , true);
+            xhttp.send();
+        }
+    </script> 
+<form action="">
+   
+     <h1>Add Books</h1> 
+      Book ID  <input type="text" id="bid"></br>
+      Book Name: <input type="text" id="bname"></br>
+      Book unit price: <input type="number" id="unit_price"></br>
+     
+      <button type="button" onclick="addbook()" >Submit</button>
+      <p id="add"></p>
+      
+    </form>
+    <script>
+        function addbook(){
+            var xhttp= new XMLHttpRequest();
+            xhttp.onreadystatechange=function(){
+                if(this.readyState==4 && this.status==200)
+                {
+                    document.getElementById("add").innerHTML=this.responseText;
+                }
+            };
+            xhttp.open("POST","books" , true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
